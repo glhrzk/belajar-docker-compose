@@ -1,3 +1,5 @@
+<b> ini adalah catatan pribadi, jika ingin lebih jelas buka file docker-compose di setiap foldernya </b>
+
 docker compose digunakan untuk mempermudah membuat container.
 sifat docker compose adalah isolated per project, (semua perintah akan dijalankan/berfungsi di folder/project kita berada, ketika kita menjalankan di project/folder a maka folder b,c dan d tidak akan terpengaruh.)
 secara default folder yang kita buat adalah nama dari project tersebut.
