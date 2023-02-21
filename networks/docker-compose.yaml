@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mongo-env:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: galhirizki
+      MONGO_INITDB_DATABASE: admin
+    networks:
+      - network_example
+
+networks:
+  network_example:
+    name: network_example
+    driver: bridge

@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mongodb1:
+    container_name: mongodb1
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: galhirizki
+      MONGO_INITDB_DATABASE: admin
+    # short sintaks 
+    volumes:
+      - "volume-mongo1:/data/db:rw"
+
+  mongodb2:
+    container_name: mongodb2
+    image: mongo:latest
+    ports:
+      - "27015:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: galhirizki
+      MONGO_INITDB_DATABASE: admin
+    # long sintaks 
+    volumes:
+      - type: volume
+        source: "volume-mongo2"
+        target: "/data/db"
+        read_only: false
+
+# create volume
+volumes:
+  volume-mongo1:
+    name: volume-mongo1
+  volume-mongo2:
+    name: volume-mongo2

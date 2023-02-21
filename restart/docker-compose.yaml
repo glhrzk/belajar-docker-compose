@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: galhirizki
+      MONGO_INITDB_DATABASE: admin
+    networks:
+      - network_example
+
+  mongoexpress:
+    container_name: mongoexpress
+    image: mongo-express:latest
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_AUTH_USERNAME: root
+      ME_CONFIG_MONGODB_AUTH_PASSWORD: galhirizki
+      ME_CONFIG_MONGODB_AUTH_DATABASE: admin
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    networks:
+      - network_example
+    depends_on:
+      - mongodb
+    restart: always
+
+networks:
+  network_example:
+    name: network_example
+    driver: bridge
